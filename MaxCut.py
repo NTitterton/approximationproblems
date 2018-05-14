@@ -95,21 +95,13 @@ def maxcut_SDP(G, is_adj_list=True):
 		G = _adj_list_to_adj_matrx(G)
 
 	# variables				
-	# for v in range(V):
-	# 	x.append(cvx.Variable(V))
 	X = cvx.Variable((V, V), PSD=True)
 
 	# constraints
-	# for i in range(V):
-	# 	constraints.append(cvx.sum_squares(x[i]) == 1)
 	for i in range(V):
 		constraints.append(X[i, i] == 1)
-	constraints.append(X == X.T)
 
 	# objective function	
-	# for i in range(V):
-	# 	for j in range(i + 1, V):
-	# 		expr += G[i, j] * (1 - np.dot(x[i].T, x[j]))
 	expr = cvx.sum(cvx.multiply(G, (np.ones((V, V)) - X)))
 
 	# solve
