@@ -90,7 +90,7 @@ def maxcut_SDP(G, is_adj_list=True):
 	#	chi: a list of length |V| where the ith element is +1 or -1, representing which
 	#	set the ith vertex is in. Returns None if an error occurs.
 	# setup
-	V, x, constraints, expr = len(G), [], [], 0
+	V, constraints, expr = len(G), [], 0
 	if is_adj_list:
 		G = _adj_list_to_adj_matrx(G)
 
